@@ -1,0 +1,47 @@
+[
+  {
+    "id": "tx-001",
+    "date": "2026-05-28",
+    "description": "Groceries - Superindo",
+    "amount": 285000,
+    "category": "Food & Groceries",
+    "type": "expense",
+    "note": "Weekly belanja"
+  },
+  {
+    "id": "tx-002",
+    "date": "2026-05-28",
+    "description": "Gaji Bulanan",
+    "amount": 5000000,
+    "category": "Income",
+    "type": "income",
+    "note": "Gaji Mei"
+  },
+  {
+    "id": "tx-003",
+    "date": "2026-05-29",
+    "description": "Nonton bareng",
+    "amount": 75000,
+    "category": "Entertainment",
+    "type": "expense",
+    "note": "Bioskop XXI"
+  },
+  {
+    "id": "tx-004",
+    "date": "2026-05-29",
+    "description": "Bensin",
+    "amount": 100000,
+    "category": "Transportation",
+    "type": "expense",
+    "note": "Full tank Pertamax"
+  },
+  {
+    "id": "tx-005",
+    "date": "2026-05-30",
+    "description": "Makan siang",
+    "amount": 45000,
+    "category": "Food & Groceries",
+    "type": "expense",
+    "note": "Ayam geprek"
+  }
+]
