@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { sql } from "@/lib/neon";
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "src", "data", "wallets.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const wallets = JSON.parse(raw);
+    const wallets = await sql`
+      SELECT * FROM wallets ORDER BY owner, type, name
+    `;
     return NextResponse.json(wallets);
-  } catch {
+  } catch (error) {
+    console.error("GET /api/wallets error:", error);
     return NextResponse.json({ error: "Failed to load wallets" }, { status: 500 });
   }
 }
@@ -16,20 +16,20 @@ export async function GET() {
 export async function PATCH(request: Request) {
   try {
     const { walletId, newBalance } = await request.json();
-    const filePath = path.join(process.cwd(), "src", "data", "wallets.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const wallets = JSON.parse(raw);
 
-    const idx = wallets.findIndex((w: { id: string }) => w.id === walletId);
-    if (idx === -1) {
+    const [updated] = await sql`
+      UPDATE wallets SET balance = ${Number(newBalance)}
+      WHERE id = ${walletId}
+      RETURNING *
+    `;
+
+    if (!updated) {
       return NextResponse.json({ error: "Wallet not found" }, { status: 404 });
     }
 
-    wallets[idx].balance = newBalance;
-    fs.writeFileSync(filePath, JSON.stringify(wallets, null, 2));
-
-    return NextResponse.json(wallets[idx]);
-  } catch {
+    return NextResponse.json(updated);
+  } catch (error) {
+    console.error("PATCH /api/wallets error:", error);
     return NextResponse.json({ error: "Failed to update wallet" }, { status: 500 });
   }
 }

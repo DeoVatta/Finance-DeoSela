@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { sql } from "@/lib/neon";
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "src", "data", "transactions.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const transactions = JSON.parse(raw);
-    return NextResponse.json(transactions);
+    const rows = await sql`
+      SELECT * FROM transactions ORDER BY date DESC, created_at DESC
+    `;
+    return NextResponse.json(rows);
   } catch (error) {
+    console.error("GET /api/transactions error:", error);
     return NextResponse.json({ error: "Failed to load transactions" }, { status: 500 });
   }
 }
@@ -16,25 +16,18 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const filePath = path.join(process.cwd(), "src", "data", "transactions.json");
-    const raw = fs.readFileSync(filePath, "utf-8");
-    const transactions = JSON.parse(raw);
+    const id = `tx-${Date.now()}`;
+    const date = body.date || new Date().toISOString().split("T")[0];
 
-    const newTx = {
-      id: `tx-${Date.now()}`,
-      date: body.date || new Date().toISOString().split("T")[0],
-      description: body.description,
-      amount: Number(body.amount),
-      category: body.category || "Uncategorized",
-      type: body.type || "expense",
-      note: body.note || "",
-    };
+    await sql`
+      INSERT INTO transactions (id, date, description, amount, category, type, wallet_id, note)
+      VALUES (${id}, ${date}, ${body.description}, ${Number(body.amount)}, ${body.category || "Uncategorized"}, ${body.type || "expense"}, ${body.walletId || null}, ${body.note || ""})
+    `;
 
-    transactions.push(newTx);
-    fs.writeFileSync(filePath, JSON.stringify(transactions, null, 2));
-
+    const [newTx] = await sql`SELECT * FROM transactions WHERE id = ${id}`;
     return NextResponse.json(newTx, { status: 201 });
   } catch (error) {
+    console.error("POST /api/transactions error:", error);
     return NextResponse.json({ error: "Failed to add transaction" }, { status: 500 });
   }
 }
