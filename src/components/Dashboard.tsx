@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DashboardStats } from "@/lib/types";
+import { DashboardStats, Wallet } from "@/lib/types";
 import SummaryCards from "./SummaryCards";
 import CategoryChart from "./CategoryChart";
 import TransactionList from "./TransactionList";
+import WalletCards from "./WalletCards";
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
@@ -15,10 +17,17 @@ export default function Dashboard() {
   const fetchData = async () => {
     try {
       setError(false);
-      const res = await fetch("/api/stats");
-      if (!res.ok) throw new Error("Failed");
-      const data = await res.json();
-      setStats(data);
+      const [statsRes, walletsRes] = await Promise.all([
+        fetch("/api/stats"),
+        fetch("/api/wallets"),
+      ]);
+      if (!statsRes.ok || !walletsRes.ok) throw new Error("Failed");
+      const [statsData, walletsData] = await Promise.all([
+        statsRes.json(),
+        walletsRes.json(),
+      ]);
+      setStats(statsData);
+      setWallets(walletsData);
       setLastUpdate(new Date().toLocaleTimeString("id-ID"));
     } catch {
       setError(true);
@@ -29,7 +38,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 30000); // Auto-refresh every 30s
+    const interval = setInterval(fetchData, 30000);
     return () => clearInterval(interval);
   }, []);
 
@@ -67,6 +76,8 @@ export default function Dashboard() {
       </div>
 
       <SummaryCards stats={stats} />
+
+      <WalletCards wallets={wallets} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <CategoryChart stats={stats} />

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "wallet-001",
+    "name": "Seabank Deo",
+    "owner": "Deo",
+    "type": "bank",
+    "balance": 2500000,
+    "icon": "🏦",
+    "color": "#3B82F6"
+  },
+  {
+    "id": "wallet-002",
+    "name": "Seabank Sela",
+    "owner": "Sela",
+    "type": "bank",
+    "balance": 1800000,
+    "icon": "🏦",
+    "color": "#EC4899"
+  },
+  {
+    "id": "wallet-003",
+    "name": "BCA",
+    "owner": "Deo",
+    "type": "bank",
+    "balance": 5000000,
+    "icon": "🏛️",
+    "color": "#10B981"
+  },
+  {
+    "id": "wallet-004",
+    "name": "Dana Deo",
+    "owner": "Deo",
+    "type": "e-wallet",
+    "balance": 350000,
+    "icon": "💳",
+    "color": "#8B5CF6"
+  },
+  {
+    "id": "wallet-005",
+    "name": "Dana Sela",
+    "owner": "Sela",
+    "type": "e-wallet",
+    "balance": 200000,
+    "icon": "💳",
+    "color": "#F59E0B"
+  },
+  {
+    "id": "wallet-006",
+    "name": "ShopeePay Deo",
+    "owner": "Deo",
+    "type": "e-wallet",
+    "balance": 150000,
+    "icon": "🛍️",
+    "color": "#EF4444"
+  },
+  {
+    "id": "wallet-007",
+    "name": "ShopeePay Valmira",
+    "owner": "Valmira",
+    "type": "e-wallet",
+    "balance": 100000,
+    "icon": "🛍️",
+    "color": "#F97316"
+  },
+  {
+    "id": "wallet-008",
+    "name": "GoPay Ansela",
+    "owner": "Ansela",
+    "type": "e-wallet",
+    "balance": 275000,
+    "icon": "💚",
+    "color": "#4ADE80"
+  },
+  {
+    "id": "wallet-009",
+    "name": "Cash",
+    "owner": "Bersama",
+    "type": "cash",
+    "balance": 500000,
+    "icon": "💵",
+    "color": "#6B7280"
+  }
+]

@@ -6,6 +6,7 @@
     "amount": 285000,
     "category": "Food & Groceries",
     "type": "expense",
+    "walletId": "wallet-001",
     "note": "Weekly belanja"
   },
   {
@@ -15,6 +16,7 @@
     "amount": 5000000,
     "category": "Income",
     "type": "income",
+    "walletId": "wallet-003",
     "note": "Gaji Mei"
   },
   {
@@ -24,6 +26,7 @@
     "amount": 75000,
     "category": "Entertainment",
     "type": "expense",
+    "walletId": "wallet-008",
     "note": "Bioskop XXI"
   },
   {
@@ -33,6 +36,7 @@
     "amount": 100000,
     "category": "Transportation",
     "type": "expense",
+    "walletId": "wallet-008",
     "note": "Full tank Pertamax"
   },
   {
@@ -42,6 +46,7 @@
     "amount": 45000,
     "category": "Food & Groceries",
     "type": "expense",
+    "walletId": "wallet-009",
     "note": "Ayam geprek"
   }
 ]
