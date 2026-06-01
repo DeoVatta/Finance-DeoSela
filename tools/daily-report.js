@@ -43,7 +43,7 @@ async function main() {
 
   // ── 2. TODAY'S TRANSACTIONS ────────────────────────────────────────
   const todayTx = await pool.query(`
-    SELECT t.category, t.type, t.amount, t.description, w.name as wallet_name
+    SELECT t.category, t.type, t.amount, t.description, w.name as wallet_name, t.created_by
     FROM transactions t
     JOIN wallets w ON t.wallet_id = w.id
     WHERE t.date = $1
@@ -59,7 +59,7 @@ async function main() {
   console.log(`PEMASUKAN HARI INI: ${rp(totalIncome)}`);
   if (income.length > 0) {
     income.forEach(t => {
-      console.log(`  + ${t.description}: ${rp(t.amount)} [${t.wallet_name}]`);
+      console.log(`  + ${t.description}: ${rp(t.amount)} [${t.wallet_name}] ${t.created_by ? `(diinput oleh: ${t.created_by})` : ''}`);
     });
   } else {
     console.log(`  (tidak ada)`);
@@ -77,7 +77,7 @@ async function main() {
       console.log(`  - ${cat}: ${rp(amt)}`);
     });
     expense.forEach(t => {
-      console.log(`    ${t.description}: ${rp(t.amount)}`);
+      console.log(`    ${t.description}: ${rp(t.amount)} ${t.created_by ? `(diinput oleh: ${t.created_by})` : ''}`);
     });
   } else {
     console.log(`  (tidak ada)`);
