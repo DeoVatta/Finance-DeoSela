@@ -1,0 +1,101 @@
+{
+  "fans": {
+    "Azry": {
+      "index": 5,
+      "delivered": [],
+      "folders": [
+        "Azry 4",
+        "Azry 2",
+        "Azry 1",
+        "Azry 5",
+        "Azry 3"
+      ]
+    },
+    "trenstyp": {
+      "index": 8,
+      "delivered": [
+        "My Video 2.mp4",
+        "My Video.mp4",
+        "IMG_5116.mp4",
+        "IMG_5118.mp4",
+        "IMG_5115.mp4",
+        "IMG_5114.mp4"
+      ],
+      "folders": [
+        "trenstyp 4",
+        "trenstyp 3",
+        "trenstyp 7",
+        "trenstyp 6",
+        "trenstyp 8",
+        "trenstyp 5",
+        "trenstyp 2",
+        "trenstyp"
+      ]
+    },
+    "keymasterio221": {
+      "index": 2,
+      "delivered": [
+        "IMG_5118.mp4"
+      ],
+      "folders": [
+        "keymasterio221 2",
+        "keymasterio221"
+      ]
+    },
+    "Eatxnakes": {
+      "index": 0,
+      "delivered": [
+        "No Mask Solo.mp4"
+      ],
+      "folders": [
+        "Eatxnakes"
+      ]
+    },
+    "Juninsui - Special Request": {
+      "index": 0,
+      "delivered": [
+        "For Juninsui.mp4"
+      ],
+      "folders": [
+        "Juninsui - Special Request"
+      ]
+    },
+    "RYO - Mihara Cosplay": {
+      "index": 0,
+      "delivered": [
+        "Mihara Cosplay - Solo.mp4"
+      ],
+      "folders": [
+        "RYO - Mihara Cosplay"
+      ]
+    },
+    "Jeff11": {
+      "index": 0,
+      "delivered": [],
+      "folders": [
+        "Jeff11"
+      ]
+    },
+    "Discord Spill Me": {
+      "index": 0,
+      "delivered": [],
+      "folders": [
+        "Discord Spill Me"
+      ]
+    },
+    "aiden0202": {
+      "index": 0,
+      "delivered": [],
+      "folders": [
+        "aiden0202"
+      ]
+    },
+    "Sins - Fan Sign": {
+      "index": 0,
+      "delivered": [],
+      "folders": [
+        "Sins - Fan Sign"
+      ]
+    }
+  }
+}
